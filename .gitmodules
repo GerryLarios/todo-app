@@ -1,0 +1,6 @@
+[submodule "react-app"]
+	path = react-app
+	url = git@github.com:GerryLarios/todo-app-react.git
+[submodule "graphql-app"]
+	path = graphql-app
+	url = git@github.com:GerryLarios/todo-app-graphql.git
