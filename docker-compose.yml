@@ -2,15 +2,18 @@ version: '3.9'
 
 services:
   graphql-app:
-    build: ./graphql-app
+    image: graphql-app:latest
+    # build:
+    #   context: "./graphql-app" 
+    #   target: ${DOCKER_TARGET_BUILD}
     volumes:
       - "./graphql-app:/app"
+    env_file:
+      - .env
     ports:
-      - "4000:4000"
-    expose:
-      - 4000
+      - "${GRAPHQL_APP_PORT}:${GRAPHQL_APP_PORT}"
     environment:
-      - port=4000
+      - PORT=${GRAPHQL_APP_PORT}
     depends_on:
       - db
     
