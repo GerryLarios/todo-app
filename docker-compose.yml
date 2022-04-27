@@ -3,9 +3,6 @@ version: '3.9'
 services:
   graphql-app:
     image: graphql-app:latest
-    # build:
-    #   context: "./graphql-app" 
-    #   target: ${DOCKER_TARGET_BUILD}
     volumes:
       - "./graphql-app:/app"
     env_file:
@@ -14,6 +11,13 @@ services:
       - "${GRAPHQL_APP_PORT}:${GRAPHQL_APP_PORT}"
     environment:
       - PORT=${GRAPHQL_APP_PORT}
+      - HOSTNAME=${GRAPHQL_APP_HOST}
+      - DB_NAME=${DB_NAME}
+      - DB_HOST=db
+      - DB_POOL_MIN=${DB_POOL_MIN}
+      - DB_POOL_MAX=${DB_POOL_MAX}
+      - DB_PASS=${POSTGRES_PASSWORD}
+      - DB_USER=${POSTGRES_USER}
     depends_on:
       - db
     
@@ -22,5 +26,6 @@ services:
     environment:
       - POSTGRES_USER=${POSTGRES_USER}
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=${DB_NAME}
     env_file:
       - .env
