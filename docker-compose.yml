@@ -18,6 +18,9 @@ services:
       - DB_POOL_MAX=${DB_POOL_MAX}
       - DB_PASS=${POSTGRES_PASSWORD}
       - DB_USER=${POSTGRES_USER}
+      - SALTROUNDS=${SALTROUNDS}
+      - JWT_SECRET=${JWT_SECRET}
+      - JWT_EXPIRES=${JWT_EXPIRES}
     depends_on:
       - db
     
